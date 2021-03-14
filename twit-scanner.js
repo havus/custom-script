@@ -16,6 +16,7 @@ class TwitScanner {
   constructor(minimalDate) {
     this.minimalDate          = minimalDate;
     this.specialKeyWord       = ['bpp', 'bppn', 'bpn', 'balikpapan', 'blkppn', 'balik papan', 'bpp,'];
+    this.screen_name          = ''
 
     this._consumer_key        = process.env.CONSUMER_KEY;
     this._consumer_secret     = process.env.CONSUMER_SECRET;
@@ -66,7 +67,7 @@ class TwitScanner {
 
   getTweets(maxId) {
     return new Promise(async (resolve, _) => {
-      const params = { count: 200, screen_name: 'FWBESS', tweet_mode: 'extended' };
+      const params = { count: 200, screen_name: this.screen_name, tweet_mode: 'extended' };
   
       if (maxId) {
         params.max_id = maxId;
